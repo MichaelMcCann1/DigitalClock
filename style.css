@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background: black;
+  height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.digit {
+  height: 150px;
+  aspect-ratio: 1/2;
+  margin: 0 .5em;
+  position: relative;
+}
+
+.digit div {
+  background: rgba(36, 36, 36, 0.5);
+  border-radius: 1000px;
+}
+
+.digit .top {
+  margin: 0 auto;
+  width: 85%;
+  height: 6%;
+}
+
+.digit .topRight {
+  width: 12%;
+  height: 41%;
+  position: absolute;
+  top: 6%;
+  right: 0;
+}
+
+.digit .topLeft {
+  width: 12%;
+  height: 41%;
+  position: absolute;
+  top: 6%;
+  left: 0;
+}
+
+.digit .middle {
+  width: 85%;
+  height: 6%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.digit .bottomRight {
+  width: 12%;
+  height: 41%;
+  position: absolute;
+  right: 0;
+  bottom: 6%;
+}
+
+.digit .bottomLeft {
+  width: 12%;
+  height: 41%;
+  position: absolute;
+  left: 0;
+  bottom: 6%;
+}
+
+.digit .bottom {
+  width: 85%;
+  height: 6%;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.colon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 150px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 0 1em;
+}
+
+.dot {
+  width: 1.5em;
+  height: 1.5em;
+  background: rgba(255, 25, 25, 0.7);
+}
+
+.numberGroup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.time {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.ampm {
+  color: rgba(36, 36, 36, 0.5);
+  height: 150px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 0 1em;
+  font-size: 2em;
+}
+
+.date {
+  color: rgba(255, 25, 25, 0.7);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 2em;
+  margin: 0 2em 3em 2em;
+}
+/*# sourceMappingURL=style.css.map */
