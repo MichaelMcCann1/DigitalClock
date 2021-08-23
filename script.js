@@ -1,92 +1,87 @@
 function getTimeData() {
   let date = new Date();
-  let time = {};
-  time.year = date.getFullYear();
-  time.month = date.getMonth();
-  time.date = date.getDate();
-  time.hours = date.getHours();
-  time.minutes = date.getMinutes();
-  time.seconds = date.getSeconds();
+  time = {
+    year: date.getFullYear(),
+    month: date.getMonth(),
+    date: date.getDate(),
+    hours: date.getHours(),
+    minutes: date.getMinutes(),
+    seconds: date.getSeconds()
+  };
 
   let months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
-  time.month = months[time.month - 1];
+  time.month = months[time.month];
 
-  time.hours < 12 ? time.ampm = 'AM' : time.apmp = "PM";
-
-  time.hours = time.hours % 12;
-
-  return time
+  time.hours < 12 ? time.ampm = 'AM' : time.ampm = "PM";
+  if (time.hours === 0) time.hours = 12;
+  if (time.hours !== 12) time.hours = time.hours % 12;
 }
 
-function serparateDigits(time, slot) {
-  for (let i=0; i<3; i++) {
+function seperate(){
+  if (time.hours <= 9) time.hours = `0${time.hours}`
+  if (time.minutes <= 9) time.minutes = `0${time.minutes}`
+  if (time.seconds <= 9) time.seconds = `0${time.seconds}`
 
-    let first, second;
+  time.hours = time.hours.toString()
+  time.minutes = time.minutes.toString()
+  time.seconds = time.seconds.toString()
 
-    if (time[`${slot[i]}`] > 9) {
-      first = time[`${slot[i]}`].toString()[0];
-      second = time[`${slot[i]}`].toString()[1];
-    } else {
-      first = 0;
-      second = time[`${slot[i]}`].toString()[0];
-    }
-  
-    let numbers = ['zero','one','two','three','four','five','six','seven','eight','nine'];
-  
-    first = numbers[first];
-    second = numbers[second];
-  
-    time[`${slot[i]}`] = [first, second];
+  let numberString = (time.hours + time.minutes + time.seconds)
+  let wordArray = []
+  let numbers = ['zero','one','two','three','four','five','six','seven','eight','nine'];
+
+  for (let i=0; i<numberString.length; i++){
+    wordArray.push(numbers[numberString[i]])
   }
 
-  return time
+  time.wordArray = wordArray
 }
 
 function clearColor(){
-  let digitDivSelector = document.querySelectorAll('.digit div');
-  digitDivSelector.forEach(node => node.style.background = black)
-  let ampmSelector = document.querySelectorAll('.ampm > h1');
-  ampmSelector.forEach(node => node.style.color = black)
+  const digitDivSelector = document.querySelectorAll('.digit > div');
+  const ampmSelector = document.querySelectorAll('.ampm > h1');
+
+  digitDivSelector.forEach(node => node.style.background = gray)
+  ampmSelector.forEach(node => node.style.color = gray)
 }
 
-function updateDigits(digits, slot){
-  for (let i=0; i<2; i++) {
-    let firstSecond;
-    i === 0 ? firstSecond = 'first' : firstSecond = 'second';
-      let digitSelector = document.querySelectorAll(`.${slot} .${firstSecond} .${digits[i]}`);
-      digitSelector.forEach(node => node.style.background = red)
+function displayTime(){
+  let digitSelector = document.querySelectorAll('.digit')
+  for (let i=0; i<time.wordArray.length; i++){
+    let digit = digitSelector[i]
+    let digitDiv = digit.getElementsByClassName(`${time.wordArray[i]}`)
+    digitDiv = Array.from(digitDiv);
+    digitDiv.forEach(node => node.style.background = red)
   }
 }
 
-function updateAMPM(ampm) {
-  let ampmSelector = document.querySelectorAll('.ampm > h1');
-  let number;
-  ampm === 'AM' ? number = 0 : number =  1;
-  ampmSelector[number].style.color = red
+function displayAMPM() {
+  const AM = document.querySelector('.AM')
+  const PM = document.querySelector('.PM')
+  time.ampm === 'AM' ? AM.style.color = red : PM.style.color = red;
 }
 
-function updateDate(time){
-  let month = document.querySelector('.month > h1');
-  let day = document.querySelector('.day > h1');
-  let year = document.querySelector('.year > h1');
+function displayDate(){
+  const month = document.querySelector('.month > h1');
+  const day = document.querySelector('.day > h1');
+  const year = document.querySelector('.year > h1');
 
   month.textContent = time.month;
   day.textContent = time.date;
   year.textContent = time.year;
 }
 
+
 //MAIN
-let red = 'rgba(255, 25, 25, 0.7)';
-let black = 'rgba(36, 36, 36, 0.5)';
+let red = getComputedStyle(document.documentElement).getPropertyValue('--red')
+let gray = getComputedStyle(document.documentElement).getPropertyValue('--gray')
+let time;
 
 setInterval(() => {
-  let time = getTimeData();
-  let digits = serparateDigits(time, ['hours','minutes','seconds']);
-
+  getTimeData();
+  seperate()
   clearColor();
-  updateAMPM(digits.ampm);
-  updateDigits(digits.hours, 'hour');
-  updateDigits(digits.minutes, 'minute');
-  updateDigits(digits.seconds, 'seconds');
-  updateDate(time);
-}, 1000);
+  displayTime();
+  displayAMPM();
+  displayDate();
+}, 200);
