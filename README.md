@@ -25,7 +25,7 @@ It is important to understand the HTML for a single digit on the clock. Each dig
 
 ## JavaScript
 
-The app works by running the following functions repeatedly every 200ms. These functions are repeated every 200ms instead of every second to make the clock more accurate with the actual time. If you refresh the page when the interval is set to repeat every 1000ms, you could potentially almost an entire second behind the actual time. With an interval of 200ms the clock is at least accurate to within a fifth of second. 
+The app works by running the following functions repeatedly every 200ms. These functions are repeated every 200ms instead of every second to make the clock more accurate with the actual time. If you refresh the page when the interval is set to repeat every 1000ms, you could potentially almost be an entire second behind the actual time. With an interval of 200ms the clock is at least accurate to within a fifth of second. 
 
 ``` javascript
 setInterval(() => {
@@ -64,7 +64,7 @@ if (time.hours !== 12) time.hours = time.hours % 12;
 
 ### createWordArray()
 
-This function takes the time data and produces what I call a "word array". For example if the current time is 4:23:03, this function will return `[zero, four, two, three, zero, three]`. This array is the word form of each number in the current time. The word form of each number is needed to select the appropriate class of each line segment.
+This function takes the time data and produces what I call a "word array". For example if the current time is 4:23:03, this function will return `[zero, four, two, three, zero, three]`. This array is the word form of each number in the current time. The word form of each number is needed to select the appropriate class of each line segment in a digit as shown in the HTML above.
 
 First the numbers are padded with zero if necessary. In the previous example a zero was padded before the four in the word array. The numbers are then converted to the word form.
 
