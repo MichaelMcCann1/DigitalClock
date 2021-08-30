@@ -17,7 +17,7 @@ function getTimeData() {
   if (time.hours !== 12) time.hours = time.hours % 12;
 }
 
-function seperate(){
+function createWordArray(){
   if (time.hours <= 9) time.hours = `0${time.hours}`
   if (time.minutes <= 9) time.minutes = `0${time.minutes}`
   if (time.seconds <= 9) time.seconds = `0${time.seconds}`
@@ -73,15 +73,21 @@ function displayDate(){
 
 
 //MAIN
-let red = getComputedStyle(document.documentElement).getPropertyValue('--red')
-let gray = getComputedStyle(document.documentElement).getPropertyValue('--gray')
+
+let red;
+let gray;
 let time;
+
+window.onload = () => {
+  red = getComputedStyle(document.documentElement).getPropertyValue('--red')
+  gray = getComputedStyle(document.documentElement).getPropertyValue('--gray')
+}
 
 setInterval(() => {
   getTimeData();
-  seperate()
+  createWordArray()
   clearColor();
   displayTime();
   displayAMPM();
   displayDate();
-}, 200);
+}, 1000);
