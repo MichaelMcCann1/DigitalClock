@@ -1,5 +1,7 @@
 # DigitalClock
 
+**Live Link to Project:** https://mm-digitalclock.web.app/
+
 I created a clock that is styled like an old digital clock you might find on a nightstand. The clock shows the current time and the date. This project was created using vanilla JavaScript and has a responsive design.
 
 The numbers for the time are not from a font. Each line segment in a digit is a div element and the correct elements are changed to a red color for the appropriate number. The other numbers are given a gray color. This effect creates the appearance of what a number would look like on a real digital clock.
