@@ -1,3 +1,6 @@
+let vh = window.innerHeight * 0.01;
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
 function getTimeData() {
   let date = new Date();
   time = {
@@ -62,9 +65,9 @@ function displayAMPM() {
 }
 
 function displayDate(){
-  const month = document.querySelector('.month > h1');
-  const day = document.querySelector('.day > h1');
-  const year = document.querySelector('.year > h1');
+  const month = document.querySelector('.month > p');
+  const day = document.querySelector('.day > p');
+  const year = document.querySelector('.year > p');
 
   month.textContent = time.month;
   day.textContent = time.date;

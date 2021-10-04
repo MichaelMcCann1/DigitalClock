@@ -18,7 +18,7 @@
 
 body {
   background: black;
-  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   display: grid;
   place-content: center;
 }
@@ -44,13 +44,17 @@ body {
   color: var(--red);
   display: flex;
   justify-content: space-between;
-  font-size: 2em;
-  margin: 0 2em 3em 2em;
+  font-size: 4em;
+  margin: 0 1em 1em 1em;
+}
+
+.date > div > div {
+  font-size: inherit;
 }
 
 .digit {
   height: var(--digitHeight);
-  aspect-ratio: 1/2;
+  width: calc(.5 * var(--digitHeight));
   margin: 0 .5em;
   position: relative;
 }
@@ -139,7 +143,7 @@ body {
   flex-direction: column;
   justify-content: space-around;
   margin-left: 1em;
-  font-size: 2em;
+  font-size: 4em;
 }
 
 @media screen and (max-width: 1000px ) {
@@ -155,11 +159,11 @@ body {
   }
 
   .ampm {
-    font-size: 1.5em;
+    font-size: 3em;
   }
 
   .date {
-    font-size: 1.5em;
+    font-size: 3em;
   }
 }
 
@@ -180,12 +184,12 @@ body {
   }
 
   .ampm {
-    margin-left: .5em;
-    font-size: 1em;
+    margin-left: .25em;
+    font-size: 2em;
   }
 
   .date {
-    font-size: 1em;
+    font-size: 2.5em;
   }
 
   .digit {
@@ -199,7 +203,7 @@ body {
 
 @media screen and (max-width: 600px ) {
   :root {
-    --lineWidth: 2.5px;
+    --lineWidth: 3px;
     --digitHeight: 50px;
   }
 
@@ -210,10 +214,10 @@ body {
   }
 
   .ampm {
-    font-size: .75em;
+    font-size: 1em;
   }
 
   .date {
-    font-size: .75em;
+    font-size: 1.5em;
   }
 }
