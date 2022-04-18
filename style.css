@@ -48,10 +48,6 @@ body {
   margin: 0 1em 1em 1em;
 }
 
-.date > div > div {
-  font-size: inherit;
-}
-
 .digit {
   height: var(--digitHeight);
   width: calc(.5 * var(--digitHeight));
